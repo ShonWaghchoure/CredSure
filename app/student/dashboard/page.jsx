@@ -17,7 +17,7 @@ const page = () => {
 
   useEffect(() => {
     const verifyAndLoadStudent = async () => {
-      const token = localStorage.getItem('proofly_student_token');
+      const token = localStorage.getItem('credsure_student_token');
       
       if (!token) {
         router.push('/student/login');
@@ -57,12 +57,12 @@ const page = () => {
           }
 
         } else {
-          localStorage.removeItem('proofly_student_token');
+          localStorage.removeItem('credsure_student_token');
           router.push('/student/login');
         }
       } catch (error) {
         console.error('Token verification error:', error);
-        localStorage.removeItem('proofly_student_token');
+        localStorage.removeItem('credsure_student_token');
         router.push('/student/login');
       } finally {
         setLoading(false);
@@ -73,7 +73,7 @@ const page = () => {
   }, [router]);
 
   const handleLogout = () => {
-    localStorage.removeItem('proofly_student_token');
+    localStorage.removeItem('credsure_student_token');
     router.push('/');
   };
 
@@ -96,7 +96,7 @@ const page = () => {
     setDownloadingCredentialId(credential._id);
     
     try {
-      const token = localStorage.getItem('proofly_student_token');
+      const token = localStorage.getItem('credsure_student_token');
       const response = await fetch(`${BACKEND_URL}/api/credentials/download/${credential._id}`, {
         method: 'GET',
         headers: {
@@ -260,7 +260,7 @@ const page = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
               <Link href="/" className="text-2xl font-bold">
-                Proofly
+                CredSure
               </Link>
               <span className="text-gray-400">|</span>
               <span className="text-[#e0e0e0] sm:block hidden">Student Vault</span>
@@ -328,12 +328,20 @@ const page = () => {
               >
 
                 <div className="h-60 w-full relative overflow-hidden bg-white/3">
-                  <Image
-                    src={`${BACKEND_URL}/${credential.imagePath}`}
-                    alt={credential.title}
-                    fill
-                    className="object-cover transition-transform duration-500"
-                  />
+                  {credential.imagePath?.toLowerCase().endsWith('.pdf') ? (
+  <iframe
+    src={`${BACKEND_URL}/${credential.imagePath}#toolbar=0&navpanes=0&view=FitH`}
+    title={credential.title}
+    className="absolute inset-0 w-full h-full bg-white border-0"
+  />
+) : (
+  <Image
+    src={`${BACKEND_URL}/${credential.imagePath}`}
+    alt={credential.title}
+    fill
+    className="object-cover transition-transform duration-500"
+  />
+)}
 
                   <div className="absolute top-4 right-4">
                     <div className="w-8 h-8 bg-green-500/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">

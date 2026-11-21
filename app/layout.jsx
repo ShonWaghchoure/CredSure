@@ -22,7 +22,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata = {
-  title: "Proofly - Your Digital Identity",
+  title: "CredSure - Your Digital Identity",
   description: "Identity for your digital footprint",
 };
 

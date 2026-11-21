@@ -12,8 +12,19 @@ import Credential from '../models/Credential.js';
 import Student from '../models/Student.js';
 import jwt from 'jsonwebtoken';
 import blockchainService from '../utils/blockchain.js';
-import config from '../../config.json' assert { type: 'json' };
+import config from '../../config.json' with { type: 'json' };
+import { PDFDocument } from 'pdf-lib';
 
+async function addQRCodeToPdf(pdfBuffer, qrUrl) {
+  const pdfDoc = await PDFDocument.load(pdfBuffer);
+  const qrPng = await QRCode.toBuffer(qrUrl, { width: 300, margin: 1 });
+  const qrImage = await pdfDoc.embedPng(qrPng);
+  const page = pdfDoc.getPages()[0];
+  const { width } = page.getSize();
+  const size = 90;
+  page.drawImage(qrImage, { x: width - size - 20, y: 20, width: size, height: size });
+  return Buffer.from(await pdfDoc.save());
+}
 const router = new Hono();
 
 // Get __dirname equivalent for ES modules
@@ -126,7 +137,8 @@ router.post('/issue', universityAuthMiddleware, async (c) => {
 
     const timestamp = Date.now();
     const originalName = file.name.split('.')[0];
-    const fileName = `${timestamp}-${originalName}.png`;
+    const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+const fileName = `${timestamp}-${originalName}.${isPdf ? 'pdf' : 'png'}`;
     const filePath = path.join(uploadsDir, fileName);
     const fileBuffer = await file.arrayBuffer();
 
@@ -141,7 +153,9 @@ router.post('/issue', universityAuthMiddleware, async (c) => {
     }
 
     const qrUrl = `${config.frontend_url}/validate?q=${slug}`;
-    const modifiedImageBuffer = await addQRCodeToImage(Buffer.from(fileBuffer), qrUrl);
+    const modifiedImageBuffer = isPdf
+  ? await addQRCodeToPdf(Buffer.from(fileBuffer), qrUrl)
+  : await addQRCodeToImage(Buffer.from(fileBuffer), qrUrl);
     
     // Ensure directory exists before writing file
     try {

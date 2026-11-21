@@ -14,11 +14,11 @@ export default function Footer() {
                 <i className="ri-building-fill text-3xl"></i>
               </div>
               <span className="font-semibold text-2xl font-inter text-white">
-                Hashure
+                CredSure
               </span>
             </div>
             <p className="text-base font-inter font-medium text-white/60 mt-0.5">
-              © {new Date().getFullYear()} Hashure. All rights reserved.
+              © {new Date().getFullYear()} CredSure. All rights reserved.
             </p>
           </div>
           
@@ -64,7 +64,7 @@ export default function Footer() {
                 <i className="ri-twitter-x-fill text-3xl"></i>
               </Link>
               <Link
-                href="https://github.com/SiddDevZ/proofly-hackathon"
+                href="https://github.com/SiddDevZ/credsure-hackathon"
                 className="text-white/60 hover:text-white transition-colors"
               >
                 <i className="ri-github-fill text-3xl"></i>

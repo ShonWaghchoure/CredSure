@@ -15,7 +15,7 @@ const ValidatePageLoading = () => {
         <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
-              <Link href="/" className="text-2xl font-bold font-['Poppins',sans-serif]">Proofly</Link>
+              <Link href="/" className="text-2xl font-bold font-['Poppins',sans-serif]">CredSure</Link>
               <span className="text-[#c2c2c2]">|</span>
               <span className="text-gray-300 font-['DM_Sans',sans-serif]">Certificate Validator</span>
             </div>
@@ -297,7 +297,7 @@ const ValidatePage = () => {
         <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
-              <Link href="/" className="text-2xl font-bold font-['Poppins',sans-serif]">Proofly</Link>
+              <Link href="/" className="text-2xl font-bold font-['Poppins',sans-serif]">CredSure</Link>
               <span className="text-[#c2c2c2]">|</span>
               <span className="text-gray-300 font-['DM_Sans',sans-serif]">Certificate Validator</span>
             </div>
@@ -579,7 +579,7 @@ const ValidatePage = () => {
                             <li>• Contact the issuing institution directly</li>
                             <li>• Try scanning the QR code on the certificate instead</li>
                             <li>• Verify you have the original, unmodified file</li>
-                            <li>• Check if the certificate was issued through Proofly</li>
+                            <li>• Check if the certificate was issued through CredSure</li>
                           </ul>
                         </div>
 
@@ -630,7 +630,7 @@ const ValidatePage = () => {
 
         {/* Security Features Section - Hidden on small screens */}
         <div className="mt-20">
-          <h2 className="text-3xl font-bold text-center mb-12 font-['Poppins',sans-serif]">Why Trust Proofly?</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 font-['Poppins',sans-serif]">Why Trust CredSure?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white/[0.03] border border-white/10 rounded-xl p-6 text-center">
               <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -779,7 +779,7 @@ const ValidatePage = () => {
         <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
             <p className="text-[#c2c2c2] text-sm font-['Inter',sans-serif]">
-              © 2024 Proofly. Secured by blockchain technology.
+              © 2024 CredSure. Secured by blockchain technology.
             </p>
             
             <div className="flex items-center space-x-4">

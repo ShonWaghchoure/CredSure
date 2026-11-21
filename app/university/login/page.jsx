@@ -30,7 +30,7 @@ const page = () => {
   useEffect(() => {
     // Check if university is already logged in
     const verifyToken = async () => {
-      const token = localStorage.getItem('proofly_university_token');
+      const token = localStorage.getItem('credsure_university_token');
       if (token) {
         try {
           const response = await fetch(`${BACKEND_URL}/api/university/verify`, {
@@ -45,11 +45,11 @@ const page = () => {
           if (data.valid) {
             router.push('/university/dashboard');
           } else {
-            localStorage.removeItem('proofly_university_token');
+            localStorage.removeItem('credsure_university_token');
           }
         } catch (error) {
           console.error('Token verification error:', error);
-          localStorage.removeItem('proofly_university_token');
+          localStorage.removeItem('credsure_university_token');
         }
       }
     };
@@ -114,7 +114,7 @@ const page = () => {
 
       if (response.ok) {
         // Store token in localStorage
-        localStorage.setItem('proofly_university_token', data.token);
+        localStorage.setItem('credsure_university_token', data.token);
         // Redirect to dashboard
         router.push('/university/dashboard');
       } else {

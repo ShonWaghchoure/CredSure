@@ -1,3 +1,4 @@
+import dns from 'dns'; dns.setServers(['8.8.8.8','1.1.1.1']);
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { serve } from '@hono/node-server';
@@ -68,13 +69,13 @@ app.route('/api/university', universityAuth);
 app.route('/api/credentials', credentialRoutes);
 
 // Serve static files from uploads directory
-// This serves files at both /uploads/* and /proofly/uploads/* paths
+// This serves files at both /uploads/* and /credsure/uploads/* paths
 app.use('/uploads/*', serveStatic({ 
   root: path.resolve(__dirname) 
 }));
-app.use('/proofly/uploads/*', serveStatic({ 
+app.use('/credsure/uploads/*', serveStatic({ 
   root: path.resolve(__dirname),
-  rewriteRequestPath: (path) => path.replace(/^\/proofly/, '')
+  rewriteRequestPath: (path) => path.replace(/^\/credsure/, '')
 }));
 
 const port = process.env.PORT || 3001;

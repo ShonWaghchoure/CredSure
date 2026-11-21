@@ -1,10 +1,10 @@
-# 🎓 Hashure - Blockchain-Powered Credential Verification
+# 🎓 CredSure - Blockchain-Powered Credential Verification
 
 <div align="center">
 
 **A decentralized platform for issuing, storing, and verifying academic credentials on the Polygon blockchain**
 
-[Live Demo](https://hashure.siddz.com) • [Report Bug](https://github.com/SiddDevZ/hashure/issues) • [Request Feature](https://github.com/SiddDevZ/hashure/issues)
+[Live Demo](https://credsure.siddz.com) • [Report Bug](https://github.com/SiddDevZ/credsure/issues) • [Request Feature](https://github.com/SiddDevZ/credsure/issues)
 
 </div>
 
@@ -13,7 +13,7 @@
 ## 📸 Screenshot
 
 <div align="center">
-  <img src="./screenshot.png" alt="Hashure Platform Screenshot" width="100%">
+  <img src="./screenshot.png" alt="CredSure Platform Screenshot" width="100%">
 </div>
 
 ---
@@ -40,7 +40,7 @@
 
 ## 🌟 Overview
 
-**Hashure** is a blockchain-powered platform that revolutionizes academic credential verification. Built on the Polygon network, it enables universities to issue tamper-proof certificates, allows students to own and share their achievements securely, and provides recruiters with instant, fraud-proof verification.
+**CredSure** is a blockchain-powered platform that revolutionizes academic credential verification. Built on the Polygon network, it enables universities to issue tamper-proof certificates, allows students to own and share their achievements securely, and provides recruiters with instant, fraud-proof verification.
 
 ### The Problem
 
@@ -52,7 +52,7 @@
 
 ### The Solution
 
-Hashure leverages blockchain technology to create an immutable, decentralized system where:
+CredSure leverages blockchain technology to create an immutable, decentralized system where:
 - ✅ Credentials are hashed and stored on the Polygon blockchain
 - ⚡ Verification happens in seconds, not days
 - 🔒 Tamper-proof security ensures authenticity
@@ -194,8 +194,8 @@ Hashure leverages blockchain technology to create an immutable, decentralized sy
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/SiddDevZ/hashure-hackathon.git
-   cd hashure-hackathon
+   git clone https://github.com/SiddDevZ/credsure-hackathon.git
+   cd credsure-hackathon
    ```
 
 2. **Install frontend dependencies**
@@ -216,9 +216,9 @@ Hashure leverages blockchain technology to create an immutable, decentralized sy
 
 ```env
 # Database
-DATABASE_URL=mongodb://localhost:27017/hashure
+DATABASE_URL=mongodb://localhost:27017/credsure
 # or MongoDB Atlas
-# DATABASE_URL=mongodb+srv://username:password@cluster.mongodb.net/hashure
+# DATABASE_URL=mongodb+srv://username:password@cluster.mongodb.net/credsure
 
 # Blockchain
 POLYGON_AMOY_RPC_URL=https://rpc-amoy.polygon.technology/
@@ -276,7 +276,7 @@ npm run dev
 ## 📁 Project Structure
 
 ```
-hashure-hackathon/
+credsure-hackathon/
 ├── app/                          # Next.js App Router
 │   ├── layout.jsx               # Root layout
 │   ├── page.jsx                 # Landing page
@@ -372,11 +372,11 @@ sequenceDiagram
 
 ### Blockchain Storage Method
 
-Hashure stores credential hashes in the **transaction data field** of Polygon transactions:
+CredSure stores credential hashes in the **transaction data field** of Polygon transactions:
 
 ```javascript
-// Format: PROOFLY:hash:slug
-data: ethers.toUtf8Bytes(`PROOFLY:${credentialHash}:${slug}`)
+// Format: CREDSURE:hash:slug
+data: ethers.toUtf8Bytes(`CREDSURE:${credentialHash}:${slug}`)
 ```
 
 This approach:
@@ -391,7 +391,7 @@ This approach:
 
 ### Base URL
 ```
-Production: https://api.siddz.com/hashure
+Production: https://api.siddz.com/credsure
 Development: http://localhost:3001
 ```
 
@@ -573,7 +573,7 @@ Response: [...]
 4. **Setup PM2** (process manager)
    ```bash
    sudo npm install -g pm2
-   pm2 start server.js --name hashure-backend
+   pm2 start server.js --name credsure-backend
    pm2 startup
    pm2 save
    ```
@@ -652,8 +652,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 **Developer**: Siddharth  
-**Project Link**: [https://hashure.siddz.com](https://hashure.siddz.com)  
-**GitHub**: [https://github.com/SiddDevZ/hashure-hackathon](https://github.com/SiddDevZ/hashure-hackathon)
+**Project Link**: [https://credsure.siddz.com](https://credsure.siddz.com)  
+**GitHub**: [https://github.com/SiddDevZ/credsure-hackathon](https://github.com/SiddDevZ/credsure-hackathon)
 
 ---
 

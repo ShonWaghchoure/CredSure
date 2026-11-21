@@ -95,7 +95,7 @@ const page = () => {
 
       if (response.ok) {
         // Store token in localStorage
-        localStorage.setItem('proofly_university_token', data.token);
+        localStorage.setItem('credsure_university_token', data.token);
         // Redirect to dashboard
         router.push('/university/dashboard');
       } else {

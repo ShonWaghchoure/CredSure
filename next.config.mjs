@@ -13,7 +13,7 @@ const nextConfig = {
           "img.youtube.com",
           "i.ytimg.com",
           "localhost",
-          "proofly.siddz.com",
+          "credsure.siddz.com",
           "siddz.com",
           "api.siddz.com"
         ],

@@ -29,7 +29,7 @@ const UniversityDashboard = () => {
 
   useEffect(() => {
     const verifyAndLoadData = async () => {
-      const token = localStorage.getItem('proofly_university_token');
+      const token = localStorage.getItem('credsure_university_token');
       if (!token) {
         router.push('/university/login');
         return;
@@ -73,12 +73,12 @@ const UniversityDashboard = () => {
           }
 
         } else {
-          localStorage.removeItem('proofly_university_token');
+          localStorage.removeItem('credsure_university_token');
           router.push('/university/login');
         }
       } catch (error) {
         console.error('Error:', error);
-        localStorage.removeItem('proofly_university_token');
+        localStorage.removeItem('credsure_university_token');
         router.push('/university/login');
       } finally {
         setLoading(false);
@@ -110,7 +110,7 @@ const UniversityDashboard = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('proofly_university_token');
+    localStorage.removeItem('credsure_university_token');
     router.push('/');
   };
 
@@ -154,7 +154,7 @@ const UniversityDashboard = () => {
     formData.append('credential', file);
 
     try {
-      const token = localStorage.getItem('proofly_university_token');
+      const token = localStorage.getItem('credsure_university_token');
       const response = await fetch(`${BACKEND_URL}/api/credentials/issue`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
@@ -206,7 +206,7 @@ const UniversityDashboard = () => {
     setShowConfirmDialog(false);
 
     try {
-      const token = localStorage.getItem('proofly_university_token');
+      const token = localStorage.getItem('credsure_university_token');
       const response = await fetch(`${BACKEND_URL}/api/credentials/revoke/${credentialToRevoke._id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` },
@@ -362,7 +362,7 @@ const UniversityDashboard = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
               <Link href="/" className="text-2xl font-bold">
-                Proofly
+                CredSure
               </Link>
               <span className="text-[#666666]">|</span>
               <span className="text-[#d0d0d0] sm:block hidden">University Portal</span>
@@ -553,12 +553,20 @@ const UniversityDashboard = () => {
                 {issuedCredentials.map((cred) => (
                   <div key={cred._id} className="group bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 hover:bg-white/[0.04] transition-all duration-300">
                     <div className="h-60 w-full relative overflow-hidden bg-white/3">
-                      <Image 
-                        src={`${BACKEND_URL}/${cred.imagePath}`} 
-                        alt={cred.title} 
-                        fill 
-                        className="object-cover transition-transform duration-500" 
-                      />
+                      {cred.imagePath?.toLowerCase().endsWith('.pdf') ? (
+  <iframe
+    src={`${BACKEND_URL}/${cred.imagePath}#toolbar=0&navpanes=0&view=FitH`}
+    title={cred.title}
+    className="absolute inset-0 w-full h-full bg-white border-0"
+  />
+) : (
+  <Image
+    src={`${BACKEND_URL}/${cred.imagePath}`}
+    alt={cred.title}
+    fill
+    className="object-cover transition-transform duration-500"
+  />
+)}
                       <button
                         onClick={() => handleRevokeClick(cred)}
                         disabled={revoking === cred._id}

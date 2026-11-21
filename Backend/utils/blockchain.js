@@ -1,10 +1,11 @@
+import 'dotenv/config';
 import { ethers } from 'ethers';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 // Polygon Amoy testnet configuration
-const POLYGON_AMOY_RPC = 'https://rpc-amoy.polygon.technology/';
+const POLYGON_AMOY_RPC = process.env.POLYGON_AMOY_RPC_URL || 'https://rpc-amoy.polygon.technology/';
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 class BlockchainService {
