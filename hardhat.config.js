@@ -10,4 +10,4 @@ module.exports = {
       accounts: [`0x${process.env.PRIVATE_KEY}`],
     },
   },
-}; 
+}; // CredSure Hardhat configuration.

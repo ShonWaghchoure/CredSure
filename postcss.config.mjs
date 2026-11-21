@@ -3,3 +3,4 @@ const config = {
 };
 
 export default config;
+// CredSure PostCSS configuration.
